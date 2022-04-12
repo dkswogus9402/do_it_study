@@ -10,7 +10,7 @@ def BFS(i, j):
     while queue:
         y, x = queue.popleft()
 
-        life_flower[visited[y][x]] += 1
+        life_flower[visited[y][x]] += 1 # BFS에서 생명주기 리스트 생성
         life_flower[visited[y][x] + A[y][x]] -= 1
 
         for dy, dx in ((0,1), (0,-1), (1, 0), (-1,0)):
@@ -35,7 +35,7 @@ for tc in range(1, 1+T):
     max_value = 0
     max_day = 0
 
-    for i in range(1, N*M):
+    for i in range(1, N*M): # 최고 값 구하기 memoization
         life_flower[i] = life_flower[i-1] + life_flower[i]
 
         if max_value < life_flower[i]:

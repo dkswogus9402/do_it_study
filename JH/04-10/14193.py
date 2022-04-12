@@ -9,9 +9,11 @@ def BFS(i, j):
     queue.append([i, j])
 
     while True:
+        ###############################
         bfs_queue = deque()
         flag = 0
         visited = [[-1] * M for _ in range(N)]
+
         for y, x in queue:
             bfs_queue.append([y,x])
             visited[y][x] = 0
@@ -19,7 +21,7 @@ def BFS(i, j):
         while bfs_queue:
             y, x = bfs_queue.popleft()
 
-            if ground[y][x] == 'A' and visited[y][x] != 0:
+            if ground[y][x] == 'A' and visited[y][x] != 0: # 방문하지 않은 A 지역
                 cnt += visited[y][x]
                 queue.append([y,x])
                 flag = 1
@@ -31,8 +33,8 @@ def BFS(i, j):
                 if 0 <= ny < N and 0 <= nx < M and visited[ny][nx] == -1 and ground[ny][nx] != '#':
                     bfs_queue.append([ny, nx])
                     visited[ny][nx] = visited[y][x] + 1
-
-        if not bfs_queue and flag != 1: # 더이상 찾을 것이 없다.
+        #################################
+        if not bfs_queue and flag != 1: # 더이상 찾을 것이 없다. 주의
             break
 
 T = int(input())
@@ -42,6 +44,6 @@ for tc in range(1, 1+T):
     cnt = 0
     for i in range(N):
         for j in range(M):
-            if ground[i][j] == 'S':
+            if ground[i][j] == 'S': # 민코씨 자리에서 시작
                 BFS(i,j)
     print(cnt)
