@@ -42,4 +42,4 @@ for h in range(H):
 if result == -1:
     print(-1)
 else:
-    print(max_value)
+    print(max_value - 1)
