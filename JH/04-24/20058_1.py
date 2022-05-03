@@ -11,7 +11,6 @@ for L in L_list:
             for j in range(0, 2 ** N, 2 ** L):
                 value = [A[k][j:(j + 2 ** L)] for k in range(i, (i + 2 ** L))]
                 value = list(zip(*value[::-1]))
-
                 for y in range(2 ** L):
                     for x in range(2 ** L):
                         A[i + y][j + x] = value[y][x]
@@ -32,7 +31,6 @@ for L in L_list:
         A[y][x] -= 1
 
 def BFS(i,j):
-
     queue = deque()
     queue.append([i,j])
     visited[i][j] = 1
